@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* You can add global styles to this file, and also import other style files */
+
+
+
+/*validation*/
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.ng-valid[required], .ng-valid.required {border: 1px solid #42A948;}
+.error {color:#ff0000;}
+.success { color:green; }
+.contact-message { text-align: center; }
+.login-box{border: 1px solid lightgray;}
+
+@media (max-width: 767px) {
+.intro-text {display: none;}
+}

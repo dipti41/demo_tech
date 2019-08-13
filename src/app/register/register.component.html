@@ -1,0 +1,70 @@
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Registration
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+    <li class="active">Here</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="box box-default">
+    <div class="box-header with-border">
+      <h3 class="box-title">Registration Form</h3>
+    </div>
+    <!-- /.box-header -->
+    
+    <div class="box-body">
+      <div class="main-login main-center">
+        <form [formGroup]="customerForm" (ngSubmit)="onSubmit()" class="example-form">               
+              
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Full Name" formControlName="fullname">
+            <mat-error *ngIf="!customerForm.controls['fullname'].valid && customerForm.controls['fullname'].touched">
+                Customer Name Should <strong>required</strong>
+              </mat-error>
+              <input type="hidden" formControlName="id">            
+          </mat-form-field><br>
+
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Email" formControlName="email">
+            <mat-error *ngIf="!customerForm.controls['email'].valid && customerForm.controls['email'].touched">
+                Email Should a valid or <strong>required</strong>
+              </mat-error>                          
+          </mat-form-field><br>
+          
+          <mat-form-field class="example-full-width">
+            <input matInput type="password" placeholder="Password" formControlName="password">
+            <mat-error *ngIf="!customerForm.controls['password'].valid && customerForm.controls['password'].touched">
+              Password Should<strong>required</strong>
+            </mat-error>                        
+          </mat-form-field><br>
+          <mat-form-field class="example-full-width">
+            <input matInput type="password" placeholder="Confirm Password" formControlName="cnpassword">
+            <mat-error *ngIf="customerForm.hasError('notSame')">
+              Passwords do not match
+            </mat-error>              
+          </mat-form-field><br>
+          <mat-form-field>
+            <input matInput type="date"  formControlName="dob" placeholder="DOB">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="!customerForm.controls['dob'].valid && customerForm.controls['dob'].touched">
+              DOB Should <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <br>     
+                   
+          <button  mat-raised-button color="primary" [disabled]="!customerForm.valid ">Save</button>&nbsp;&nbsp;&nbsp;
+          <button  mat-raised-button color="primary" routerLink="/login" routerLinkActive="active" >Cancel</button>
+        </form>
+      </div>
+
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</section>

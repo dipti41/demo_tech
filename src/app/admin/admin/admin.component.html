@@ -1,0 +1,27 @@
+
+
+
+
+
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu">
+            
+            <li><a routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><i class="fa fa-circle-o text-red"></i> <span>Dashboard</span></a></li>
+            
+            <li><a routerLink="./customer" routerLinkActive="active"><i class="fa fa-circle-o text-aqua"></i> <span>Customer</span></a></li>
+            
+            
+            <li><a [routerLink]="['/login']"><span>Logout</span></a></li>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>
+<div class="content-wrapper">
+    <router-outlet></router-outlet>
+</div>
+

@@ -1,0 +1,61 @@
+
+<mat-card>  
+  <div class="alert alert-info">  
+      <strong>Customer List</strong>  
+  </div>
+  <button mat-raised-button [routerLink]="['/admin/customer/create']" class="pull-right" color="primary">Add</button>&nbsp;&nbsp;
+  <button mat-raised-button class="pull-right" (click)="exportCsv()" color="accent">Export</button>
+  
+  <mat-form-field>
+          <input matInput class="example-full-width" (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>  
+  
+  <div class="example-container mat-elevation-z8" #TABLE>          
+<mat-table #Table [dataSource]="MyDataSource" matSort>  
+
+<!-- For ID -->  
+<ng-container matColumnDef="sl_no">  
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Sl No. </mat-header-cell>  
+    <mat-cell *matCellDef="let post;let i = index;"> {{i+1}} </mat-cell>  
+</ng-container>  
+
+ 
+
+<!-- For Title -->  
+<ng-container matColumnDef="name">  
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Customer Name</mat-header-cell>  
+    <mat-cell *matCellDef="let post"> {{post.name}} </mat-cell>  
+</ng-container>  
+
+<!-- For Body -->  
+<ng-container matColumnDef="email">  
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Email</mat-header-cell>  
+    <mat-cell *matCellDef="let post"> {{post.email}} </mat-cell>  
+</ng-container>
+
+<ng-container matColumnDef="dob">  
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Dob </mat-header-cell>  
+    <mat-cell *matCellDef="let post"> {{post.dob}} </mat-cell>  
+</ng-container>
+
+<ng-container matColumnDef="action">  
+      <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>  
+      <mat-cell *matCellDef="let post">  
+              <a [routerLink]="['/admin/customer/edit/', post.id]"><button mat-mini-fab color="primary"><mat-icon matSuffix>mode_edit</mat-icon></button></a>
+              <button mat-mini-fab color="warn" (click)="onDelete(post.id)"><mat-icon matSuffix>delete</mat-icon></button>
+              
+      </mat-cell>  
+  </ng-container> 
+
+<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>  
+<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  
+</mat-table>
+<!-- To use pagination in DataTable  -->  
+
+<mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>  
+</mat-paginator>
+</div> 
+<!--<div><button mat-mini-fab color="primary" (click)="exportCsv()">Export</button></div>-->
+</mat-card>
+

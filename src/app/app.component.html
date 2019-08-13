@@ -1,0 +1,8 @@
+<div class="">
+  <app-header *ngIf="router.url != '/' && router.url != '/login'"></app-header>  
+  <app-login *ngIf="router.url == '/'" ></app-login>
+  <div class="">
+  <router-outlet></router-outlet>
+</div>
+    
+</div>
